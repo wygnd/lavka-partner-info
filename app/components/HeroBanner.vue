@@ -1,0 +1,97 @@
+<script setup lang="ts">
+
+import AppButton from "@/components/AppButton.vue";
+import AppTitle from "@/components/AppTitle.vue";
+</script>
+
+<template>
+  <div class="hero-banner">
+    <div class="hero-banner__image">
+      <NuxtImg src="/images/banner.webp" alt="Banner" width="450" height="600" class="hero-banner__image--img"/>
+    </div>
+    <div class="hero-banner__content">
+      <AppTitle size="h1" title='Станьте курьером у партнера Яндекс Лавки' class="block-title--white"/>
+      <div class="hero-banner__description">Получайте 230.000₽ в месяц*</div>
+      <AppButton class="hero-banner__link" type="link" href="https://google.com" title="Стать курьером"
+                 variant="secondary"/>
+    </div>
+  </div>
+</template>
+
+<style scoped lang="scss">
+.hero {
+  &-banner {
+    margin-bottom: 40px;
+    background: var(--primary);
+    border-radius: 0 0 40px 40px;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+
+    &__image {
+      width: 45%;
+      border-radius: 40px 0 0 40px;
+
+      img {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover;
+      }
+    }
+
+    &__content {
+      width: 55%;
+      padding: 0 30px;
+    }
+
+    &__description {
+      @include p1;
+      color: var(--card);
+      margin-top: 20px;
+    }
+
+    &__link {
+      margin-top: 60px;
+    }
+  }
+}
+
+@media (max-width: 720px) {
+  .hero-banner {
+    margin-bottom: 30px;
+    flex-direction: column;
+    border-radius: 20px;
+
+    &__image {
+      width: 100%;
+    }
+
+    &__content {
+      width: 100%;
+      padding: 30px 15px;
+    }
+
+    &__link {
+      margin-top: 30px;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-banner {
+    &__content {
+      padding: 15px 15px 30px;
+    }
+
+    &__description {
+      margin-top: 15px;
+    }
+
+    &__link {
+      width: 100%;
+    }
+  }
+}
+</style>

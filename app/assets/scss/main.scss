@@ -1,0 +1,25 @@
+@use "variables" as *;
+@use "resets";
+
+body {
+  background-color: var(--card);
+  max-width: 992px;
+  width: 100%;
+  margin-inline: auto;
+  overflow-x: hidden;
+  position: relative;
+}
+
+* {
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 400;
+  //color: var(--head);
+}
+
+h1 {
+  color: var(--head);
+}
+
+.content-block {
+  padding: 40px 0;
+}

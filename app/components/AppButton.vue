@@ -1,9 +1,10 @@
 <script setup lang="ts">
 
- interface IButtonProps {
+interface IButtonProps {
   title: string;
   className?: string;
   variant?: 'primary' | 'secondary' | 'card';
+  icon?: string;
 }
 
 interface IButtonDefaultProps extends IButtonProps {
@@ -19,7 +20,7 @@ interface IButtonTextProps extends IButtonProps {
   type: 'text',
 }
 
- export type TButtonProps = IButtonDefaultProps | IButtonLinkProps | IButtonTextProps;
+export type TButtonProps = IButtonDefaultProps | IButtonLinkProps | IButtonTextProps;
 
 const props = defineProps<TButtonProps>()
 
@@ -36,13 +37,20 @@ const classes = computed(() => [
       v-if="props.type === 'button'"
       :class="classes"
   >{{ props.title }}
+    <span v-if="props.icon" :class="['pi', props.icon]"></span>
   </button>
   <a
       v-else-if="props.type === 'link'"
       :class="classes"
       :href="props.href"
-  >{{ props.title }}</a>
-  <div :class="classes" v-else-if="props.type === 'text'">{{ title }}</div>
+  >
+    {{ props.title }}
+    <span v-if="props.icon" :class="['pi', props.icon]"></span>
+  </a>
+  <div :class="classes" v-else-if="props.type === 'text'">
+    {{ title }}
+    <span v-if="props.icon" :class="['pi', props.icon]"></span>
+  </div>
 </template>
 
 <style scoped lang="scss">
@@ -53,9 +61,10 @@ const classes = computed(() => [
   padding: 15px 30px;
   border-radius: 15px;
   background: var(--primary);
-  display: block;
+  display: flex;
   align-items: center;
   justify-content: center;
+  gap: 10px;
   text-decoration: none;
   width: fit-content;
   text-align: center;

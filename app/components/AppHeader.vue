@@ -27,7 +27,7 @@ header {
   background: var(--card);
   border-radius: 15px;
   z-index: 100;
-  box-shadow: inset 0 -1px 0 #eaeaea, 0rem 2rem 5rem rgba(0, 0, 0, 0.1);;
+  box-shadow: inset 0 -1px 0 #eaeaea, 0rem 2rem 5rem rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1) 0px 10px 50px;
 }
 
 @media (max-width: 520px) {

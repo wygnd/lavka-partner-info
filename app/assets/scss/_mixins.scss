@@ -32,15 +32,23 @@
 }
 
 @mixin h5 {
+  /* font-size: 25px; */
+  font-size: clamp(1.4375rem, 1.4125rem + 0.125vw, 1.5625rem);
+  font-style: normal;
+  font-weight: 900;
+  line-height: 130%;
 }
 
 @mixin h6 {
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: 130%;
 }
 
 @mixin menu {
-  /* font-size: 18px; */
-  font-size: clamp(0.75rem, 0.675rem + 0.375vw, 1.125rem);
-  font-weight: 600;
+  font-size: 18px;
+  font-weight: 900;
   line-height: 100%;
 }
 

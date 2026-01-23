@@ -1,5 +1,4 @@
-import {fileURLToPath} from 'node:url'
-import Aura from '@primeuix/themes/aura';
+import Aura from '@primeuix/themes/nora';
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({

@@ -3,7 +3,7 @@
 import AppTitle from '@/components/AppTitle.vue'
 
 export interface ISlideItemProps {
-  title: string;
+  title?: string;
   image: string;
 }
 
@@ -13,7 +13,7 @@ const props = defineProps<ISlideItemProps>();
 
 <template>
   <div class="slide-item">
-    <AppTitle :title="props.title" size="h3" class="slide-item__title"/>
+    <AppTitle v-if="props.title" :title="props.title" size="h3" class="slide-item__title"/>
     <div class="slide-item__image">
       <NuxtImg :src="props.image"/>
     </div>
@@ -22,6 +22,8 @@ const props = defineProps<ISlideItemProps>();
 
 <style scoped lang="scss">
 .slide-item {
+  margin: 0 5px;
+
   &__title {
     color: var(--head);
     margin-bottom: 40px;
@@ -29,6 +31,8 @@ const props = defineProps<ISlideItemProps>();
 
   &__image {
     width: 100%;
+    border-radius: 20px;
+    overflow: hidden;
 
     img {
       width: 100%;

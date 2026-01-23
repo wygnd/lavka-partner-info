@@ -44,6 +44,7 @@ const togglePopover = (event: Event) => {
           :title="activeCity.name"
           @click="popoverRef?.toggle($event)"
           class="maps-block__select"
+          icon="pi-angle-double-down"
       />
 
       <Popover ref="popoverRef">
@@ -81,18 +82,22 @@ const togglePopover = (event: Event) => {
     }
 
     &__select {
-      max-width: 520px;
-      width: 100%;
+      width: fit-content;
     }
 
     &__wrapper {
       margin-top: 40px;
       width: 100%;
       height: 500px;
+      overflow: hidden;
+      border-radius: 20px;
+      border: 2px solid var(--primary);
+      box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 
       iframe {
         width: 100%;
         height: 100%;
+        border: none;
       }
     }
   }
@@ -112,9 +117,13 @@ const togglePopover = (event: Event) => {
   .maps-block {
     padding: 30px 0;
 
+    &__select {
+      width: 100%;
+    }
+
     &__wrapper {
       margin-top: 30px;
-      height: 350px;
+      height: 500px;
     }
   }
 }

@@ -1,0 +1,39 @@
+name: Deploy to Server
+
+on:
+  push:
+    branches: [ "master" ]
+
+jobs:
+  deploy:
+    name: Update server by ssh
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1.1.0
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            cd /home/projects/bitrix24
+
+            git fetch origin master
+            git reset --hard origin/master
+
+            docker build -t lavka-info:latest .
+
+            if [ $(docker ps -q -f name=lavka-info) ]; then
+              docker stop lavka-info
+              docker rm lavka-info
+            fi
+
+            docker run -d --name lavka-info -p 3000:80 lavka-info:latest
+
+      - name: Notify about error via Telegram Bot
+        if: failure()
+        run: |
+          curl -s -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_TOKEN }}/sendMessage" \
+          -d chat_id="${{ secrets.TELEGRAM_CHAT_ID }}" \
+          -d text="❌ Деплой в ветку ${{ github.ref }} завершился с ошибкой!\r\nКомит: ${{ github.event.head_commit.message }}"

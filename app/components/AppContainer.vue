@@ -7,7 +7,6 @@ const props = withDefaults(defineProps<IContainerProps>(), {
   width: '1600px'
 })
 
-console.log(props.width);
 </script>
 
 <template>

@@ -22,10 +22,9 @@ jobs:
             git fetch origin master
             git reset --hard origin/master
             
-            echo "🛑 Remove container"
-            docker rm -f lavka-info
-
             docker build -t lavka-info:latest .
+            
+            docker rm -f lavka-info
 
             docker run -d --name lavka-info -p 3000:80 lavka-info:latest
 

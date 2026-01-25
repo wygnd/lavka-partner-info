@@ -21,11 +21,8 @@ jobs:
 
             git fetch origin master
             git reset --hard origin/master
-
-            if [ $(docker ps -aq -f name=lavka-info) ]; then
-              docker stop lavka-info
-              docker rm lavka-info
-            fi
+                      
+            docker rm -f lavka-info
 
             docker build -t lavka-info:latest .
 

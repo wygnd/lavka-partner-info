@@ -24,12 +24,12 @@ const props = defineProps<IAccordionProps>();
   <div class="accordion-block content-block">
     <AppContainer>
       <AppTitle v-if="props.title" :title="props.title" size="h2" class="accordion-block__title"/>
-      <Accordion value="0">
+      <Accordion class="accordion-block__items" expandIcon='pi pi-chevron-down' collapseIcon="pi pi-chevron-up">
         <AccordionPanel v-if="props.items.length > 0" v-for="tab in props.items" :key="tab.title" :value="tab.id"
                         class="accordion-block__item">
           <AccordionHeader class="accordion-block__item-title">{{ tab.title }}</AccordionHeader>
           <AccordionContent class="accordion-block__item-description">
-            <p class="m-0">{{ tab.description }}</p>
+            {{ tab.description }}
           </AccordionContent>
         </AccordionPanel>
       </Accordion>
@@ -43,31 +43,55 @@ const props = defineProps<IAccordionProps>();
     margin-bottom: 20px;
   }
 
-  .p {
-    &-accordionpanel {
-      background: var(--background-light) !important;
-      border-radius: 20px;
-      margin-bottom: 10px;
-      overflow: hidden;
+  &__items {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px 15px;
+  }
 
+  &__item {
+    border: none;
+    background: var(--background-light);
+    border-radius: 30px;
+    overflow: hidden;
+    padding: 30px;
+
+    &:last-child {
+      margin-bottom: 0;
     }
 
-    &-accordionheader {
-      background: var(--background-light) !important;
-      border: none !important;
+    &-title {
+      text-wrap: balance;
+      background: var(--background-light);
+      border: none;
       color: var(--head) !important;
+      @include h6;
+    }
 
-      svg {
-        color: red !important;
+    &-description {
+      margin-top: 20px;
+
+      * {
+        color: var(--head);
+        border: none !important;
+        @include p3;
+        font-weight: 400;
       }
     }
+  }
+}
 
-    &-accordioncontent-content {
-      background-color: var(--background-light) !important;
-      color: var(--head) !important;
-      border: none !important;
+@media (max-width: 992px) {
+  .accordion-block {
+    &__items {
+      grid-template-columns: 100%;
+      gap: 10px;
     }
 
+    &__item {
+      padding: 20px;
+      border-radius: 20px;
+    }
   }
 }
 </style>

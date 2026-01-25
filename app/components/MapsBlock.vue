@@ -38,14 +38,16 @@ const togglePopover = (event: Event) => {
 <template>
   <div v-if="activeCity" class="maps-block content-block">
     <AppContainer>
-      <AppTitle title="Где можно работать?" size="h2" class="maps-block__title"/>
-      <AppButton
-          type="button"
-          :title="activeCity.name"
-          @click="popoverRef?.toggle($event)"
-          class="maps-block__select"
-          icon="pi-angle-double-down"
-      />
+      <div class="maps-block__head">
+        <AppTitle title="Где можно работать?" size="h2" class="maps-block__title"/>
+        <AppButton
+            type="button"
+            :title="activeCity.name"
+            @click="popoverRef?.toggle($event)"
+            class="maps-block__select"
+            icon="pi-angle-double-down"
+        />
+      </div>
 
       <Popover ref="popoverRef">
         <div class="maps-list">
@@ -77,8 +79,13 @@ const togglePopover = (event: Event) => {
 <style scoped lang="scss">
 .maps {
   &-block {
-    &__title {
-      margin-bottom: 20px;
+    &__head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px 30px;
+      margin-bottom: 60px;
     }
 
     &__select {
@@ -88,7 +95,7 @@ const togglePopover = (event: Event) => {
     &__wrapper {
       margin-top: 40px;
       width: 100%;
-      height: 500px;
+      height: 800px;
       overflow: hidden;
       border-radius: 20px;
       border: 2px solid var(--primary);
@@ -109,6 +116,18 @@ const togglePopover = (event: Event) => {
       &:first-child {
         margin-top: 0;
       }
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .maps-block {
+    &__head {
+      margin-bottom: 30px;
+    }
+
+    &__wrapper {
+      height: 500px;
     }
   }
 }

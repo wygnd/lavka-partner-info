@@ -26,6 +26,7 @@ const props = defineProps<IImageProps>();
 .image-block {
   &__title {
     margin-bottom: 20px;
+    text-align: center;
   }
 
   &__image {

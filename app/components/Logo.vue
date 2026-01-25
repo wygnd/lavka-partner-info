@@ -1,13 +1,21 @@
 <script setup lang="ts">
 
-const props = defineProps<{
-  title: string
-}>()
+interface ILogoProps {
+  title: string;
+  class?: string;
+}
+
+const props = defineProps<ILogoProps>();
+
+const classes = computed(() => [
+  props.class && props.class,
+  'logo-title',
+]);
 
 </script>
 
 <template>
-  <h2 class="logo-title">{{ title }}</h2>
+  <h2 :class="classes">{{ props.title }}</h2>
 </template>
 
 <style lang="scss" scoped>

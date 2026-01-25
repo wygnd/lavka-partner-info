@@ -4,12 +4,14 @@ interface IContainerProps {
 }
 
 const props = withDefaults(defineProps<IContainerProps>(), {
-  width: '992px'
+  width: '1600px'
 })
+
+console.log(props.width);
 </script>
 
 <template>
-  <div class="container" :style="[`max-width: ${props.width}px;`]">
+  <div class="container" :style="{maxWidth: props.width}">
     <slot/>
   </div>
 </template>

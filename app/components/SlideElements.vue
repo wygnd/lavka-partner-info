@@ -8,7 +8,12 @@ const props = defineProps<{
 
 const responsiveOptions = [
   {
-    breakpoint: '1920px',
+    breakpoint: '4200px',
+    numVisible: 4,
+    numScroll: 1,
+  },
+  {
+    breakpoint: '1100px',
     numVisible: 3,
     numScroll: 1,
   },
@@ -28,7 +33,9 @@ const responsiveOptions = [
 
 <template>
   <div class="slider-block">
-    <AppTitle class="slider-title" title="Забота в лавке" size="h2"/>
+    <AppContainer>
+      <AppTitle class="slider-title" title="Забота в лавке" size="h2"/>
+    </AppContainer>
     <div class="slider-block__wrapper">
       <AppContainer>
         <div class="slider-block__holder">
@@ -65,19 +72,15 @@ const responsiveOptions = [
 
   &-title {
     color: var(--primary);
-    padding: 0 20px;
     margin-bottom: 20px;
   }
 }
+
 
 @media (max-width: 520px) {
   .slider {
     &-block {
       padding: 30px 0;
-    }
-
-    &-title {
-      padding: 0 15px;
     }
   }
 }

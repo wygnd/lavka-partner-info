@@ -58,7 +58,7 @@ const classes = computed(() => [
   font-style: normal;
   @include menu;
   color: var(--card);
-  padding: 15px 30px;
+  padding: 20px 30px;
   border-radius: 15px;
   background: var(--primary);
   display: flex;
@@ -69,6 +69,7 @@ const classes = computed(() => [
   width: fit-content;
   text-align: center;
   border: none;
+  cursor: pointer;
   transition: background-color 0.2s;
 
   &:hover {
@@ -93,6 +94,12 @@ const classes = computed(() => [
       background: var(--hover);
       color: var(--card);
     }
+  }
+}
+
+@media (max-width: 992px) {
+  .button {
+    padding: 15px 25px;
   }
 }
 

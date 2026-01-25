@@ -56,10 +56,13 @@ const props = defineProps<IStepsProps>();
 
     &__items {
       list-style: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 30px;
     }
 
     &__item {
-      margin-bottom: 20px;
+      min-height: 300px;
       background: var(--primary);
       display: flex;
       gap: 10px;
@@ -83,6 +86,12 @@ const props = defineProps<IStepsProps>();
         height: fit-content;
       }
 
+      &-content {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
       &-desc {
         @include h6;
         font-weight: 600;
@@ -91,7 +100,7 @@ const props = defineProps<IStepsProps>();
 
       &-button {
         text-transform: uppercase;
-        margin-top: 20px;
+        margin-top: auto;
       }
 
       &-title {
@@ -123,6 +132,25 @@ const props = defineProps<IStepsProps>();
           height: 100%;
           box-shadow: rgba(0, 0, 0, 0.5) 0px -90px 36px -8px inset;
           z-index: 1;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .steps {
+    &-block {
+      &__items {
+        gap: 20px;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      }
+
+      &__item {
+        min-height: unset;
+
+        &-counter {
+          font-size: 60px;
         }
       }
     }

@@ -1,5 +1,3 @@
-import Aura from '@primeuix/themes/nora';
-
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
 	compatibilityDate: '2025-07-15',
@@ -12,20 +10,14 @@ export default defineNuxtConfig({
 					additionalData: '@use "~/assets/scss/_mixins.scss" as *;'
 				}
 			}
-		}
+		},
 	},
 	app: {
 		head: {
 			charset: 'utf-8',
 			viewport: 'width=device-width, initial-scale=1',
-		}
-	},
-	primevue: {
-		options: {
-			theme: {
-				preset: Aura
-			}
-		}
+		},
+		pageTransition: {name: 'page', mode: 'out-in'},
 	},
 	modules: [
 		'@nuxt/image',

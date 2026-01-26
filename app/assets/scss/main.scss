@@ -53,6 +53,15 @@ main {
   }
 }
 
+.swiper-wrapper {
+  -webkit-transition-timing-function: linear !important;
+  transition-timing-function: linear !important;
+}
+
+.swiper-slide img{
+  max-width: 100%;
+}
+
 /** ========= MEDIA QUERIES ========= **/
 @media (max-width: 520px) {
   .content-block {

@@ -10,6 +10,9 @@ import AppTitle from "@/components/AppTitle.vue";
         src="/images/banner.webp"
         alt="Banner"
         class="hero-banner__image"
+        loading="lazy"
+        width="1000"
+        height="1000"
     />
     <div class="hero-banner__content">
       <AppTitle
@@ -43,7 +46,7 @@ import AppTitle from "@/components/AppTitle.vue";
 
     &__image {
       width: 50%;
-      border-radius: 40px 0 0 40px;
+      border-radius: 60px 0 0 60px;
       height: 100%;
       display: block;
       object-fit: cover;

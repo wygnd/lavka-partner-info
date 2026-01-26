@@ -1,33 +1,13 @@
 <script setup lang="ts">
 
+import {Swiper, SwiperSlide} from 'swiper/vue';
 import type {ISlideItemProps} from "@/components/SlideItem.vue";
+import 'swiper/css';
+import {Autoplay} from "swiper/modules";
 
 const props = defineProps<{
   items: ISlideItemProps[]
 }>()
-
-const responsiveOptions = [
-  {
-    breakpoint: '4200px',
-    numVisible: 4,
-    numScroll: 1,
-  },
-  {
-    breakpoint: '1100px',
-    numVisible: 3,
-    numScroll: 1,
-  },
-  {
-    breakpoint: '828px',
-    numVisible: 2,
-    numScroll: 1,
-  },
-  {
-    breakpoint: '480px',
-    numVisible: 1,
-    numScroll: 1,
-  },
-]
 
 </script>
 
@@ -39,20 +19,36 @@ const responsiveOptions = [
     <div class="slider-block__wrapper">
       <AppContainer>
         <div class="slider-block__holder">
-          <Carousel
-              :value="items"
-              :numVisible="2"
-              :numScroll="1"
-              circular
-              :autoplayInterval="3000"
-              :responsiveOptions="responsiveOptions"
-              :showNavigators="false"
-              :showIndicators="false"
+          <swiper
+              :modules="[Autoplay]"
+              :spaceBetween="15"
+              :loop="true"
+              :speed="2000"
+              :autoplay="{
+                delay: 0,
+                disableOnInteraction: false
+              }"
+              :freeMode="true"
+              :freeModeMomentum="false"
+              :breakpoints="{
+                1: {
+                  slidesPerView: 1,
+                },
+                430: {
+                  slidesPerView: 2,
+                },
+                650: {
+                  slidesPerView: 3,
+                },
+                800: {
+                  slidesPerView: 4,
+                },
+              }"
           >
-            <template #item="slotProps">
-              <SlideItem :title="slotProps.data.title" :image="slotProps.data.image"/>
-            </template>
-          </Carousel>
+            <swiper-slide v-for="(item, index) in props.items" :key="index">
+              <SlideItem :title="item.title" :image="item.image" class="slider-block__wrapper-item"/>
+            </swiper-slide>
+          </swiper>
         </div>
       </AppContainer>
     </div>
@@ -62,16 +58,14 @@ const responsiveOptions = [
 <style scoped lang="scss">
 .slider {
   &-block {
-    padding: 40px 0;
-
     &__wrapper {
-      padding: 40px 0;
+      border-radius: 60px;
+      padding: 80px 0;
       background: var(--background);
     }
   }
 
   &-title {
-    color: var(--primary);
     margin-bottom: 20px;
   }
 }
@@ -80,7 +74,11 @@ const responsiveOptions = [
 @media (max-width: 520px) {
   .slider {
     &-block {
-      padding: 30px 0;
+
+      &__wrapper {
+        padding: 40px 0;
+        border-radius: 20px;
+      }
     }
   }
 }

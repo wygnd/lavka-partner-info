@@ -5,18 +5,27 @@ import AppTitle from '@/components/AppTitle.vue'
 export interface ISlideItemProps {
   title?: string;
   image: string;
+  class?: string;
 }
 
 const props = defineProps<ISlideItemProps>();
 
+const classes = computed(() => [
+  'slide-item',
+  props.class && props.class,
+])
+
 </script>
 
 <template>
-  <div class="slide-item">
+  <div :class="classes">
     <AppTitle v-if="props.title" :title="props.title" size="h3" class="slide-item__title"/>
-    <div class="slide-item__image">
-      <NuxtImg :src="props.image"/>
-    </div>
+    <NuxtImg
+        :src="props.image"
+        class="slide-item__image"
+        width="400"
+        height="500"
+    />
   </div>
 </template>
 
@@ -31,14 +40,20 @@ const props = defineProps<ISlideItemProps>();
 
   &__image {
     width: 100%;
-    border-radius: 20px;
+    border-radius: 30px;
     overflow: hidden;
+    height: 100%;
+    max-height: 400px;
+    display: block;
+    object-fit: contain;
+    background: var(--card);
+  }
+}
 
-    img {
-      width: 100%;
-      height: 100%;
-      display: block;
-      object-fit: contain;
+@media (max-width: 992px) {
+  .slide-item {
+    &__image {
+      max-height: 300px;
     }
   }
 }

@@ -39,7 +39,13 @@ const props = defineProps<IStepsProps>();
         <li v-if="props.lastImage || props.lastTitle" class="steps-block__item">
           <AppTitle v-if="props.lastTitle" :title="props.lastTitle" size="h2" class="steps-block__item-title"/>
           <div class="steps-block__item-image">
-            <NuxtImg v-if="props.lastImage" :src="props.lastImage"/>
+            <NuxtImg
+                v-if="props.lastImage"
+                :src="props.lastImage"
+                width="600"
+                height="400"
+                loading="lazy"
+            />
           </div>
         </li>
       </ul>

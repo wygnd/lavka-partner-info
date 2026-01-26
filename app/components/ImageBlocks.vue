@@ -1,48 +1,61 @@
 <script setup lang="ts">
 
+import {Swiper, SwiperSlide} from 'swiper/vue';
+import 'swiper/css';
+import type {IImageProps} from "~/components/ImageBlock.vue";
+import {Autoplay} from "swiper/modules";
+
+const items: IImageProps[] = [
+  {
+    image: './images/slide-bicycle.png',
+  },
+  {
+    image: './images/slide-moped.png',
+  }
+];
+
 </script>
 
 <template>
   <div class="images-block">
     <AppContainer>
+      <AppTitle title="Транспорт для Доставок" size="h2"/>
       <div class="images-block__wrapper">
-        <ImageBlock
-            :title="{
-              title: 'Транспорт для Доставок',
-              size: 'h3',
+        <swiper
+            :modules="[Autoplay]"
+            :slidesPerView="3"
+            :spaceBetween="0"
+            :loop="true"
+            :speed="2000"
+            :autoplay="{
+                delay: 0,
+                disableOnInteraction: false
+              }"
+            :freeMode="true"
+            :freeModeMomentum="false"
+            :breakpoints="{
+              1: {
+                slidesPerView: 1,
+              },
+              470: {
+                slidesPerView: 2,
+              },
+              900: {
+                slidesPerView: 3
+              }
             }"
-            image="./images/slide-bicycle.webp"
-        />
-        <ImageBlock
-            :title="{
-              title: 'Экипировка для Доставок',
-              size: 'h3',
-            }"
-            image="./images/slide-equipment.webp"
-        />
+        >
+          <swiper-slide v-for="(item, index) in items" :key="index">
+            <ImageBlock
+                :title="item.title"
+                :image="item.image"
+            />
+          </swiper-slide>
+        </swiper>
       </div>
     </AppContainer>
   </div>
 </template>
 
 <style scoped lang="scss">
-.images-block {
-  &__wrapper {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-  }
-}
-
-@media (max-width: 992px) {
-  .images-block {
-    &__wrapper {
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 30px;
-
-      .image-block {
-        padding: 0;
-      }
-    }
-  }
-}
 </style>

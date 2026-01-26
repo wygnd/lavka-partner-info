@@ -5,9 +5,10 @@ import type {ISlideItemProps} from "~/components/SlideItem.vue";
 import StepsBlock, {type IStep} from "~/components/StepsBlock.vue";
 import AppButton from "~/components/AppButton.vue";
 import type {IAccordion} from "~/components/Accordions.vue";
+import {REGISTRATION_FORM_LINK} from "~/constants/links";
 
 const slideItems: ISlideItemProps[] = [
-  {image: '/images/slide-image-1.webp'},
+  {image: '/images/slide-image-1.jpg'},
   {image: '/images/slide-image-2.webp'},
   {image: '/images/slide-image-3.webp'},
   {image: '/images/slide-image-4.webp'},
@@ -28,7 +29,7 @@ const stepsItems: IStep[] = [
       type: 'link',
       title: 'Регистрация',
       variant: 'secondary',
-      href: 'https://google.com'
+      href: REGISTRATION_FORM_LINK
     }
   },
   {
@@ -80,7 +81,7 @@ const accordionItems: IAccordion[] = [
     <StepsBlock
         :items="stepsItems"
         title="Как стать Курьером"
-        lastImage="/images/steps-image.webp"
+        lastImage="/images/steps-image.png"
         lastTitle="Вы готовы к доставкам!"
     />
     <Accordions title="Вопросы и ответы" :items="accordionItems"/>

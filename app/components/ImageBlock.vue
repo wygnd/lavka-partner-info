@@ -16,12 +16,14 @@ const props = defineProps<IImageProps>();
     <AppContainer>
       <div class="image-block__wrapper">
         <AppTitle v-if="props.title" v-bind="props.title" class="image-block__title"/>
-        <NuxtImg
-            :src="props.image"
-            class="image-block__image"
-            width="700"
-            height="500"
-        />
+        <div class="image-block__image">
+          <NuxtImg
+              :src="props.image"
+              loading="lazy"
+              width="700"
+              height="500"
+          />
+        </div>
       </div>
     </AppContainer>
   </div>
@@ -37,11 +39,16 @@ const props = defineProps<IImageProps>();
   &__image {
     border-radius: 30px;
     border: 5px solid var(--primary);
-    overflow: hidden;
     width: 100%;
     height: 300px;
-    display: block;
-    object-fit: contain;
+    padding: 20px;
+
+    img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: contain;
+    }
   }
 }
 

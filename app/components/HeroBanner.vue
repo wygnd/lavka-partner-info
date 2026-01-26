@@ -2,12 +2,13 @@
 
 import AppButton from "@/components/AppButton.vue";
 import AppTitle from "@/components/AppTitle.vue";
+import {REGISTRATION_FORM_LINK} from "~/constants/links";
 </script>
 
 <template>
   <div class="hero-banner">
     <NuxtImg
-        src="/images/banner.webp"
+        src="/images/banner.jpg"
         alt="Banner"
         class="hero-banner__image"
         loading="lazy"
@@ -24,7 +25,7 @@ import AppTitle from "@/components/AppTitle.vue";
       <AppButton
           class="hero-banner__link"
           type="link"
-          href="https://google.com"
+          :href="REGISTRATION_FORM_LINK"
           title="Стать курьером"
           variant="secondary"
       />

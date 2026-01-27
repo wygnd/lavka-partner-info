@@ -81,7 +81,7 @@ const accordionItems: IAccordion[] = [
     <StepsBlock
         :items="stepsItems"
         title="Как стать Курьером"
-        lastImage="/images/steps-image.png"
+        lastImage="/images/steps-image.webp"
         lastTitle="Вы готовы к доставкам!"
     />
     <Accordions title="Вопросы и ответы" :items="accordionItems"/>

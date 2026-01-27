@@ -7,10 +7,10 @@ import {Autoplay} from "swiper/modules";
 
 const items: IImageProps[] = [
   {
-    image: './images/slide-bicycle.png',
+    image: './images/slide-bicycle.webp',
   },
   {
-    image: './images/slide-moped.png',
+    image: './images/slide-moped.webp',
   }
 ];
 

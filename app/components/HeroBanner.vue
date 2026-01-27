@@ -8,7 +8,7 @@ import {REGISTRATION_FORM_LINK} from "~/constants/links";
 <template>
   <div class="hero-banner">
     <NuxtImg
-        src="/images/banner.jpg"
+        src="/images/banner.webp"
         alt="Banner"
         class="hero-banner__image"
         loading="lazy"

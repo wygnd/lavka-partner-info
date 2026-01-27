@@ -1,2 +1,3 @@
 export const SITE_TITLE = 'Работа курьером у партнёров Яндекс Лавки';
 export const SITE_DESCRIPTION = 'Вакансия курьера у партнёров сервиса Яндекс Лавка. Рассчитайте свой доход на онлайн-калькуляторе. Выберите удобный район и расписание.';
+export const SITE_URL = window.location.origin;

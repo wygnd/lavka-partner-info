@@ -5,7 +5,7 @@ import type {ISlideItemProps} from "~/components/SlideItem.vue";
 import StepsBlock, {type IStep} from "~/components/StepsBlock.vue";
 import AppButton from "~/components/AppButton.vue";
 import type {IAccordion} from "~/components/Accordions.vue";
-import {REGISTRATION_FORM_LINK} from "~/constants/links";
+import {REGISTRATION_FORM_LINK, TELEGRAM_LINK} from "~/constants/links";
 
 const slideItems: ISlideItemProps[] = [
   {image: '/images/slide-image-1.jpg'},
@@ -86,9 +86,40 @@ const accordionItems: IAccordion[] = [
         lastTitle="Вы готовы к доставкам!"
     />
     <Accordions id="questions-block" title="Вопросы и ответы" :items="accordionItems"/>
+    <div class="content-block">
+      <AppContainer>
+        <div class="contacts-wrapper">
+          <p class="contacts-description">Если у вас остались вопросы можете написать нам в
+            телеграмме:
+          </p>
+          <NuxtLink :to="TELEGRAM_LINK" class="contacts-link">
+            <NuxtImg src="/images/telegram.webp" class="contacts-image"/>
+          </NuxtLink>
+        </div>
+      </AppContainer>
+    </div>
   </main>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
+.contacts {
+  &-wrapper {
+    display: flex;
+    gap: 30px;
+  }
 
+  &-link {
+    text-decoration: unset;
+  }
+
+  &-description {
+    @include h6;
+    color: var(--head);
+  }
+
+  &-image {
+    width: 50px;
+    height: 50px;
+  }
+}
 </style>

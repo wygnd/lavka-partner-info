@@ -6,13 +6,14 @@ import 'swiper/css';
 import {Autoplay} from "swiper/modules";
 
 const props = defineProps<{
-  items: ISlideItemProps[]
+  id: string;
+  items: ISlideItemProps[];
 }>()
 
 </script>
 
 <template>
-  <div class="slider-block">
+  <div :id="props.id" class="slider-block">
     <AppContainer>
       <AppTitle class="slider-title" title="Забота в лавке" size="h2"/>
     </AppContainer>
@@ -23,7 +24,7 @@ const props = defineProps<{
               :modules="[Autoplay]"
               :spaceBetween="15"
               :loop="true"
-              :speed="2000"
+              :speed="6000"
               :autoplay="{
                 delay: 0,
                 disableOnInteraction: false

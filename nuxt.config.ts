@@ -22,5 +22,10 @@ export default defineNuxtConfig({
 	modules: [
 		'@nuxt/image',
 		'@primevue/nuxt-module',
-	]
+	],
+	router: {
+		options: {
+			scrollBehaviorType: 'smooth',
+		},
+	},
 })

@@ -1,14 +1,45 @@
 <script setup lang="ts">
 import Logo from "~/components/Logo.vue";
 import AppButton from "~/components/AppButton.vue";
-import {REGISTRATION_FORM_LINK} from "~/constants/links";
+import {REGISTRATION_FORM_LINK, TELEGRAM_LINK} from "~/constants/links";
+import type {IMenuItem} from "~/components/AppMenu.vue";
 
 const route = useRoute()
 
 const headerClasses = computed(() => [
   'header',
-  route.fullPath !== '/' && 'header--sticky'
 ])
+
+const navItems: IMenuItem[] = [
+  {label: 'Города', link: '#maps-block'},
+  {label: 'Преимущества', link: '#advantages-block'},
+  {label: 'Вопросы', link: '#questions-block'},
+  {label: 'Задать вопрос', link: TELEGRAM_LINK},
+  {label: 'Стать курьером', link: '#steps-block'},
+];
+
+const visible = ref<boolean>(false);
+const isMobile = ref<boolean>(false);
+
+let mediaQuery: MediaQueryList;
+
+const updateIsMobile = () => {
+  isMobile.value = mediaQuery.matches
+}
+
+onMounted(() => {
+  mediaQuery = window.matchMedia('(max-width: 1700px)')
+  updateIsMobile()
+  mediaQuery.addEventListener('change', updateIsMobile)
+})
+
+onUnmounted(() => {
+  mediaQuery.removeEventListener('change', updateIsMobile)
+})
+
+const closeModal = () => {
+  visible.value = false;
+}
 
 </script>
 
@@ -16,12 +47,20 @@ const headerClasses = computed(() => [
   <header :class="headerClasses">
     <div class="header-wrapper">
       <NuxtLink v-if="route.fullPath != '/'" to="/" class=header-logo__wrapper>
-        <Logo title="Партнер Я.Лавка" class="header-logo"/>
+        <Logo title="Яндекс Лавка" class="header-logo"/>
+        <p class="header-logo__description">Партнер сервиса</p>
       </NuxtLink>
       <Logo v-else title="Партнер Я.Лавка" class="header-logo"/>
+      <AppMenu :items="navItems" class="header-menu"/>
       <AppButton class="header-button" type="link" title="Стать курьером" :href="REGISTRATION_FORM_LINK"/>
+      <Button v-if="isMobile" icon="pi pi-bars" @click="visible = true" class="header-bars"/>
     </div>
   </header>
+  <Drawer v-if="isMobile" v-model:visible="visible" class="header-mobile">
+    <div class="header-mobile__wrapper">
+      <AppMenu :items="navItems" class="header-mobile__menu" direction="vertical" @link-click="closeModal"/>
+    </div>
+  </Drawer>
 </template>
 
 <style scoped lang="scss">
@@ -49,7 +88,7 @@ const headerClasses = computed(() => [
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 10px;
+    gap: 60px;
   }
 
   &-logo {
@@ -58,6 +97,14 @@ const headerClasses = computed(() => [
         cursor: pointer;
         text-decoration: none;
       }
+    }
+
+    &__description {
+
+      text-align: right;
+      font-size: clamp(0.625rem, 0.5625rem + 0.3125vw, 0.9375rem);
+      font-weight: 400;
+      color: var(--primary);
     }
   }
 
@@ -68,6 +115,28 @@ const headerClasses = computed(() => [
       }
     }
   }
+
+  &-bars {
+    font-size: 40px;
+  }
+
+  &-mobile {
+    &__wrapper {
+      padding-top: 20px;
+    }
+  }
+}
+
+@media (max-width: 1700px) {
+  .header {
+    &-wrapper {
+      gap: 10px;
+    }
+
+    &-menu {
+      display: none;
+    }
+  }
 }
 
 @media (max-width: 992px) {
@@ -75,23 +144,38 @@ const headerClasses = computed(() => [
     padding: 10px 30px;
     width: calc(100% - 20px);
     top: 10px;
+
+    &-wrapper {
+      flex-wrap: wrap;
+    }
+
+    &-button {
+      order: 3;
+      width: 100%;
+    }
   }
 }
 
 @media (max-width: 540px) {
   .header {
-    padding: 7px 10px;
-    gap: 5px;
+    padding: 10px 15px;
+
+    &-wrapper {
+      gap: 5px;
+    }
 
     &-logo {
       font-size: 18px;
     }
 
     &-button {
-      width: fit-content;
       padding: 10px;
       font-size: 14px;
       border-radius: 10px;
+    }
+
+    &-bars {
+      font-size: 30px;
     }
   }
 }

@@ -21,7 +21,7 @@ import {REGISTRATION_FORM_LINK} from "~/constants/links";
           title='Станьте курьером у партнера Яндекс Лавки'
           class="hero-banner__title block-title--white"
       />
-      <div class="hero-banner__description">Получайте 230.000₽ в месяц*</div>
+      <p class="hero-banner__description">Получайте до 230.000₽ в месяц*</p>
       <AppButton
           class="hero-banner__link"
           type="link"
@@ -59,8 +59,8 @@ import {REGISTRATION_FORM_LINK} from "~/constants/links";
     }
 
     &__description {
-      @include p1;
-      color: var(--card);
+      @include h3;
+      color: var(--head);
       margin-top: 40px;
     }
 
@@ -72,6 +72,7 @@ import {REGISTRATION_FORM_LINK} from "~/constants/links";
 
 @media (max-width: 992px) {
   .hero-banner {
+    padding-top: 80px;
     border-radius: 0 0 40px 40px;
     margin-bottom: 30px;
     flex-direction: column;

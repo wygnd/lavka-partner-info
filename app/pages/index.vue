@@ -76,15 +76,16 @@ const accordionItems: IAccordion[] = [
   <main>
     <HeroBanner/>
     <ImageBlocks/>
-    <MapsBlock/>
-    <SlideElements :items="slideItems"/>
+    <MapsBlock id="maps-block"/>
+    <SlideElements id="advantages-block" :items="slideItems"/>
     <StepsBlock
+        id="steps-block"
         :items="stepsItems"
         title="Как стать Курьером"
         lastImage="/images/steps-image.webp"
         lastTitle="Вы готовы к доставкам!"
     />
-    <Accordions title="Вопросы и ответы" :items="accordionItems"/>
+    <Accordions id="questions-block" title="Вопросы и ответы" :items="accordionItems"/>
   </main>
 </template>
 

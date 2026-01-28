@@ -58,8 +58,37 @@ main {
   transition-timing-function: linear !important;
 }
 
-.swiper-slide img{
+.swiper-slide img {
   max-width: 100%;
+}
+
+.p-drawer {
+  background: var(--card) !important;
+  border: none !important;
+  padding: 20px;
+  position: relative;
+
+  &-header {
+    .p-button {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 30px !important;
+      height: 30px !important;
+      border: 1px solid var(--background-light) !important;
+      border-radius: 50%;
+      transition: background 0.4s ease-out;
+
+      &:hover {
+        background: var(--primary) !important;
+
+
+        svg {
+          color: var(--card);
+        }
+      }
+    }
+  }
 }
 
 /** ========= MEDIA QUERIES ========= **/

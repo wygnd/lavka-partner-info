@@ -23,6 +23,7 @@ const classes = computed(() => [
   &-title {
     @include h4;
     color: var(--primary);
+    line-height: 110%;
   }
 }
 </style>

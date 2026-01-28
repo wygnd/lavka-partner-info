@@ -2,6 +2,12 @@
 import Popover from 'primevue/popover';
 import {ref} from 'vue'
 
+interface IMapsProps {
+  id: string;
+}
+
+const props = defineProps<IMapsProps>();
+
 interface ICity {
   id: string;
   name: string;
@@ -35,7 +41,7 @@ const togglePopover = (event: Event) => {
 </script>
 
 <template>
-  <div v-if="activeCity" class="maps-block content-block">
+  <div v-if="activeCity" :id="props.id" class="maps-block content-block">
     <AppContainer>
       <div class="maps-block__head">
         <AppTitle title="Где можно работать?" size="h2" class="maps-block__title"/>

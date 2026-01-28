@@ -9,6 +9,7 @@ export interface IStep {
 }
 
 export interface IStepsProps {
+  id: string;
   title?: string;
   items: IStep[];
   lastImage?: string;
@@ -20,7 +21,7 @@ const props = defineProps<IStepsProps>();
 </script>
 
 <template>
-  <div class="steps-block content-block">
+  <div :id="props.id" class="steps-block content-block">
     <AppContainer>
       <AppTitle v-if="props.title" :title="props.title" size="h2" class="steps-block__title"/>
       <ul v-if="props.items.length > 0" class="steps-block__items">

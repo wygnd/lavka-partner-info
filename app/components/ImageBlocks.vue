@@ -26,7 +26,7 @@ const items: IImageProps[] = [
             :slidesPerView="3"
             :spaceBetween="0"
             :loop="true"
-            :speed="2000"
+            :speed="6000"
             :autoplay="{
                 delay: 0,
                 disableOnInteraction: false

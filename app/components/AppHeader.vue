@@ -46,11 +46,10 @@ const closeModal = () => {
 <template>
   <header :class="headerClasses">
     <div class="header-wrapper">
-      <NuxtLink v-if="route.fullPath != '/'" to="/" class=header-logo__wrapper>
-        <Logo title="Яндекс Лавка" class="header-logo"/>
+      <div class="header-logo__wrapper">
+        <Logo title="Партнер Я.Лавка" class="header-logo"/>
         <p class="header-logo__description">Партнер сервиса</p>
-      </NuxtLink>
-      <Logo v-else title="Партнер Я.Лавка" class="header-logo"/>
+      </div>
       <AppMenu :items="navItems" class="header-menu"/>
       <AppButton class="header-button" type="link" title="Стать курьером" :href="REGISTRATION_FORM_LINK"/>
       <Button v-if="isMobile" icon="pi pi-bars" @click="visible = true" class="header-bars"/>

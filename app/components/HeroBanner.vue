@@ -21,7 +21,7 @@ import {REGISTRATION_FORM_LINK} from "~/constants/links";
           title='Станьте курьером у партнера Яндекс Лавки'
           class="hero-banner__title block-title--white"
       />
-      <p class="hero-banner__description">Получайте до 230.000₽ в месяц<sup>^1</sup></p>
+      <p class="hero-banner__description">Получайте до 230.000₽ в месяц¹</p>
       <AppButton
           class="hero-banner__link"
           type="link"

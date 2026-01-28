@@ -24,7 +24,7 @@ jobs:
             
             docker build -t lavka-info:latest .
             
-            docker rm -f lavka-info:latest
+            docker rm -f lavka-info || true
 
             docker run -d --name lavka-info -p 3000:80 lavka-info:latest
 

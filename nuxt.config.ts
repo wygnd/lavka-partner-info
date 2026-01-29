@@ -28,4 +28,13 @@ export default defineNuxtConfig({
 			scrollBehaviorType: 'smooth',
 		},
 	},
+	nitro: {
+		publicAssets: [
+			{
+				baseURL: 'images', // URL path: /images/*
+				dir: 'public/images', // Local path
+				maxAge: 60 * 60 * 24, // 1 day cache
+			},
+		],
+	},
 })

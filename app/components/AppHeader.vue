@@ -99,7 +99,6 @@ const closeModal = () => {
     }
 
     &__description {
-
       text-align: right;
       font-size: clamp(0.625rem, 0.5625rem + 0.3125vw, 0.9375rem);
       font-weight: 400;

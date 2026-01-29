@@ -93,12 +93,9 @@ const togglePopover = (event: Event) => {
       margin-bottom: 60px;
     }
 
-    &__title {
-      font-size: clamp(1.875rem, 1.375rem + 2.5vw, 4.375rem);
-    }
-
     &__select {
       width: fit-content;
+      font-size: clamp(1.4375rem, 1.375rem + 0.3125vw, 1.75rem);
     }
 
     &__wrapper {

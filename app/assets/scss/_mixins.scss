@@ -7,7 +7,7 @@
 
 @mixin h2 {
   color: var(--head);
-  font-size: clamp(1.875rem, 1.5625rem + 1.5625vw, 3.4375rem);
+  font-size: clamp(2.25rem, 2.0125rem + 1.1875vw, 3.4375rem);
   font-style: normal;
   font-weight: 900;
   line-height: 130%;

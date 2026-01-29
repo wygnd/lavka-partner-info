@@ -60,6 +60,7 @@ import {REGISTRATION_FORM_LINK} from "~/constants/links";
 
     &__description {
       @include h3;
+      font-size: clamp(1.875rem, 1.6875rem + 0.9375vw, 2.8125rem);
       color: var(--head);
       margin-top: 40px;
 
@@ -73,6 +74,7 @@ import {REGISTRATION_FORM_LINK} from "~/constants/links";
 
     &__link {
       margin-top: 60px;
+      font-size: clamp(1.3125rem, 1.225rem + 0.4375vw, 1.75rem);
     }
   }
 }

@@ -15,7 +15,6 @@ const navItems: IMenuItem[] = [
   {label: 'Преимущества', link: '#advantages-block'},
   {label: 'Вопросы', link: '#questions-block'},
   {label: 'Задать вопрос', link: TELEGRAM_LINK},
-  {label: 'Стать курьером', link: '#steps-block'},
 ];
 
 const visible = ref<boolean>(false);

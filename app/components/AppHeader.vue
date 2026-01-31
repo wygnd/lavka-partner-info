@@ -46,7 +46,7 @@ const closeModal = () => {
   <header :class="headerClasses">
     <div class="header-wrapper">
       <div class="header-logo__wrapper">
-        <Logo title="Партнер Я.Лавка" class="header-logo"/>
+        <Logo title="Яндекс Лавка" class="header-logo"/>
         <p class="header-logo__description">Партнер сервиса</p>
       </div>
       <AppMenu :items="navItems" class="header-menu"/>
